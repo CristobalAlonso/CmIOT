@@ -7,31 +7,67 @@
     android:onClick="publicarD1"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_public"
-        android:layout_width="124dp"
-        android:layout_height="61dp"
-        android:onClick="publicarD1"
-        android:text="ON"
+    <LinearLayout
+        android:layout_width="341dp"
+        android:layout_height="631dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.243" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <Button
-        android:id="@+id/boton_apagar"
-        android:layout_width="133dp"
-        android:layout_height="55dp"
-        android:onClick="publicarD2"
-        android:text="OFF"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="403dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.445"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.417" />
+        <TextView
+            android:id="@+id/tempTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="Temperatura"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/temp"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="0 C"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/humidityTittle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="Humedad"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/humidity"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="0 %"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/pressureTitle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="Presion"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+
+        <TextView
+            android:id="@+id/pressure"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_gravity="center"
+            android:text="0 hectopascal"
+            android:textAlignment="center"
+            android:textSize="20dp" />
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

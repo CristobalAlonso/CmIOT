@@ -20,6 +20,8 @@ import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
 import org.eclipse.paho.client.mqttv3.MqttCallback;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity {
     String nombre_Dispositivo;   //string para obtener el nombre del dispositivo
     String publicaste;                         //string para mostras el mensaje apublicar
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
 
     MqttAndroidClient client;              //  clienteMQTT este dispositivo
     MqttConnectOptions options;            // para meter parametros a la conexion
+
+    TextView txtTopic1;
+    TextView txtTopic2;
+    TextView txtTopic3;
 
 
    @Override
@@ -51,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
        //options.setUserName(USERNAME);
        //options.setPassword(PASSWORD.toCharArray());
        checar_conexion();//revisamos la conexion
+
+       txtTopic1 = findViewById(R.id.temp);
+       txtTopic2 = findViewById(R.id.humidity);
+       txtTopic3 = findViewById(R.id.pressure);
     }
     private void obtener_nombre_Dispositivo() {
         String fabricante = Build.MANUFACTURER;
@@ -58,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         nombre_Dispositivo=fabricante+" "+modelo;
         //tvNombreDispositivo =(TextView) findViewById(R.id.tv_g);//para mostrar el modelo del celular
         //tvNombreDispositivo.setText(nombre_Dispositivo);//para mostrar en el tv_g e modelo del celular
+
+
 
     }
 
@@ -78,6 +90,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onSuccess(IMqttToken asyncActionToken) {
                     // mensaje de conectado
                     Toast.makeText(getBaseContext(), "Conectado ", Toast.LENGTH_SHORT).show();
+                    sub("cmet/01","cmet/02","cmet/03");
                 }
 
                 @Override//si falla la conexion
@@ -151,6 +164,54 @@ public class MainActivity extends AppCompatActivity {
                 client.publish(tema, menssage.getBytes(),qos, false);
                 Toast.makeText(getBaseContext(), publicaste, Toast.LENGTH_SHORT).show();
             }catch (Exception e){e.printStackTrace();}
+        }
+
+    }
+
+    public void sub(String topic1,String topic2,String topic3)
+    {
+        try {
+            client.subscribe(topic1, 0);
+            client.subscribe(topic2, 0);
+            client.subscribe(topic3, 0);
+            client.setCallback(new MqttCallback() {
+                @Override
+                public void connectionLost(Throwable cause)
+                {
+
+                }
+
+                @Override
+                public void messageArrived(String topic, MqttMessage message) throws Exception
+                {
+                    String resTemp;
+                    String resHumidity;
+                    String resPressure;
+                    if(topic.matches(topic1))
+                    {
+                        resTemp = new String(message.getPayload());
+                        txtTopic1.setText(resTemp + " °C");
+                    }
+                    if(topic.matches(topic2))
+                    {
+                        resHumidity = new String(message.getPayload());
+                        txtTopic2.setText(resHumidity + " %");
+                    }
+                    if(topic.matches(topic3))
+                    {
+                        resPressure = new String(message.getPayload());
+                        txtTopic3.setText(resPressure + " hectopascal");
+                    }
+                }
+
+                @Override
+                public void deliveryComplete(IMqttDeliveryToken token)
+                {
+
+                }
+            });
+        }catch (MqttException e){
+            e.printStackTrace();
         }
 
     }
