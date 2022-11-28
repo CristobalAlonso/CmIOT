@@ -19,55 +19,61 @@
         <TextView
             android:id="@+id/tempTitle"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
             android:text="Temperatura"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#4CAF50"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/temp"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
             android:text="0 C"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#673AB7"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/humidityTittle"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
             android:text="Humedad"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#4CAF50"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/humidity"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
             android:text="0 %"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#673AB7"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/pressureTitle"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
             android:text="Presion"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#4CAF50"
+            android:textSize="25dp" />
 
         <TextView
             android:id="@+id/pressure"
             android:layout_width="match_parent"
-            android:layout_height="30dp"
+            android:layout_height="75dp"
             android:layout_gravity="center"
-            android:text="0 hectopascal"
+            android:text="0 Hectopascal"
             android:textAlignment="center"
-            android:textSize="20dp" />
+            android:textColor="#673AB7"
+            android:textSize="25dp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
