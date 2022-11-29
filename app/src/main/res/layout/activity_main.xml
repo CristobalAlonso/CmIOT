@@ -75,5 +75,6 @@
             android:textAlignment="center"
             android:textColor="#673AB7"
             android:textSize="25dp" />
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
